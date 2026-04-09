@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+:root {
+  --bg-from: #0f172a;
+  --bg-to: #071024;
+  --glass: rgba(255,255,255,0.07);
+  --muted: #9ca3af;
+  --accent: #06b6d4;
+  --accent-2: #60a5fa;
+  --danger: #ef4444;
+  --card-radius: 18px;
+  --shadow: 0 8px 32px rgba(2,6,23,0.45);
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  color: #e6eef8;
+  background: linear-gradient(180deg, var(--bg-from), var(--bg-to));
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 36px auto;
+  padding: 28px;
+}
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.app-sub {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+.controls button {
+  margin-left: 12px;
+  padding: 12px 18px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #042;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  transition: transform .12s, box-shadow .12s, opacity .12s;
+}
+.controls button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.controls .ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 12px 40px rgba(2,6,23,0.55);
+  border: 1px solid rgba(255,255,255,0.03);
+  margin-bottom: 18px;
+  animation: floaty 6s ease-in-out infinite;
+}
+.hero-left { flex: 1; }
+.hero-title { font-size: 20px; margin: 0 0 6px 0; }
+.hero-temp { font-size: 44px; font-weight: 800; line-height: 1; }
+.hero-meta { color: var(--muted); font-size: 13px; }
+
+.search {
+  margin: 6px 0 14px 0;
+}
+.search input {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: none;
+  background: var(--glass);
+  color: inherit;
+  font-size: 16px;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.search input::placeholder {
+  color: var(--muted);
+}
+.suggestions {
+  list-style: none;
+  padding: 6px;
+  margin: 10px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.suggestions li {
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+.suggestions li button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 15px;
+}
+.suggestions li button:hover {
+  background: rgba(96,165,250,0.06);
+  color: #fff;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+}
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.coords, .weather-card, .small-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  padding: 22px;
+  border-radius: var(--card-radius);
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: var(--shadow);
+  animation: fadein .7s;
+}
+.small-card { padding: 14px; }
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.weather-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.weather-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #001018;
+  font-weight: 800;
+  font-size: 32px;
+  box-shadow: 0 12px 30px rgba(6,11,30,0.6);
+}
+.weather-values {
+  font-size: 20px;
+}
+.weather-values .temp {
+  font-size: 34px;
+  font-weight: 800;
+}
+.weather-values .meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+.details {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+.detail {
+  background: rgba(255,255,255,0.02);
+  padding: 12px;
+  border-radius: 12px;
+  flex: 1;
+  text-align: center;
+}
+.detail .k {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+.detail .v {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.status .spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.06);
+  border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+.error {
+  background: linear-gradient(180deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+  color: var(--danger);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(239,68,68,0.08);
+  font-size: 15px;
+}
+
+.permission-help {
+  background: rgba(255,255,255,0.02);
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.permission-help ol {
+  margin: 8px 0 0 18px;
+}
+
+.debug-panel-simple {
+  position: fixed;
+  left: 68px;
+  bottom: 12px;
+  background: linear-gradient(180deg, rgba(2,6,23,0.75), rgba(2,6,23,0.55));
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  min-width: 260px;
+  border: 1px solid rgba(255,255,255,0.02);
+  z-index: 60;
+  transform: translateX(0);
+  transition: transform .38s cubic-bezier(.2,.9,.2,1), opacity .18s ease;
+  box-shadow: var(--shadow);
+}
+.debug-panel-simple.collapsed {
+  transform: translateX(calc(-100% - 12px));
+  width: auto;
+  padding: 6px;
+  height: 44px;
+  overflow: visible;
+  border-radius: 12px;
+}
+.debug-panel-simple .debug-content {
+  display: block;
+  animation: fadein .5s;
+}
+.debug-panel-simple.collapsed .debug-content {
+  display: none;
+}
+
+.debug-toggle {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  color: #001018;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 26px rgba(6,11,30,0.6);
+  cursor: pointer;
+  z-index: 80;
+}
+.debug-toggle .debug-arrow {
+  display: block;
+  transform-origin: center;
+  transition: transform .28s cubic-bezier(.2,.9,.2,1);
+  color: #001018;
+}
+.debug-toggle.expanded .debug-arrow {
+  transform: rotate(180deg);
+}
+.debug-toggle.collapsed .debug-arrow {
+  transform: rotate(0deg);
+}
+
+.hint {
+  color: var(--muted);
+  padding: 14px;
+  background: rgba(255,255,255,0.01);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.01);
+  font-size: 15px;
+}
+
+.footer {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes floaty { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+@keyframes fadein { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* responsive */
+@media (max-width: 980px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .hero-right { width: 100%; }
+  .controls button { padding: 8px 10px; }
+  .weather-icon { width: 64px; height: 64px; font-size: 20px; }
+}
+@media (max-width: 520px) {
+  .debug-toggle { left: 8px; }
+  .debug-panel-simple { left: 56px; }
+  .debug-panel-simple.collapsed { transform: translateX(calc(-100% - 8px)); }
+}
+

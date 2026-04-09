@@ -1,0 +1,340 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f7fb;
+    color: #0b1220
+}
+
+.card-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    gap: 30px;
+    justify-content: center;
+    margin: 50px;
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e6eef9;
+    max-width: 250px;
+    min-height: 250px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(15, 111, 235, 0.06);
+    padding: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.main-container:hover,
+.main-container:focus {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(31, 111, 235, 0.14);
+    background-color: #eef6ff;
+    cursor: pointer;
+}
+
+.main-container:focus-visible {
+    outline: 3px solid rgba(31, 111, 235, 0.16);
+    outline-offset: 2px;
+}
+
+.layout-container {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.layout-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: transform 0.12s ease;
+}
+
+.layout-container img:hover {
+    transform: scale(1.04);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.header-container input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 10px;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+/* ...existing code... */
+
+.header-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #e6eef9;
+    box-shadow: 0 6px 18px rgba(15, 111, 235, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+/* Search input */
+.searchBar {
+    width: 420px;
+    max-width: calc(100% - 220px);
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #dbeafc;
+    background: #f7fbff;
+    font-size: 14px;
+    color: #0b1220;
+    outline: none;
+    transition: box-shadow 150ms ease, border-color 150ms ease, transform 120ms ease;
+    box-shadow: none;
+}
+
+.searchBar::placeholder {
+    color: #7a8999;
+}
+
+/* subtle lift on hover */
+.searchBar:hover {
+    transform: translateY(-1px);
+}
+
+/* focus-visible for keyboard users */
+.searchBar:focus {
+    border-color: rgba(31, 111, 235, 0.22);
+    box-shadow: 0 8px 18px rgba(31, 111, 235, 0.06);
+    background: #ffffff;
+}
+
+/* Dropdown styling */
+.select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropDown {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px 40px 10px 14px;
+    /* space for custom arrow */
+    border-radius: 10px;
+    border: 1px solid #dbeafc;
+    background: #ffffff;
+    font-size: 14px;
+    color: #0b1220;
+    cursor: pointer;
+    min-width: 180px;
+    transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7b8f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+/* hide native arrow for IE */
+.dropDown::-ms-expand {
+    display: none;
+}
+
+.dropDown:hover {
+    transform: translateY(-1px);
+}
+
+.dropDown:focus {
+    outline: none;
+    border-color: rgba(31, 111, 235, 0.22);
+    box-shadow: 0 8px 18px rgba(31, 111, 235, 0.06);
+}
+
+/* responsive adjustments */
+@media (max-width: 900px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .searchBar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .dropDown {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+.detail-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.prod-img-container {
+    display: block;
+    min-width: 500px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 20px;
+    align-items: center;
+    background-color: aliceblue;
+    padding-left: 50px;
+}
+
+.prod-detail-container {
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 20px;
+    background-color: aliceblue;
+}
+
+.prod-img-container button {
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: azure;
+}
+
+.prod-img-container button:hover {
+    background-color: rgb(236, 241, 241);
+}
+
+.price {
+    color: #059669;
+    font-weight: 600;
+}
+
+/* HEADER CONTAINER */
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+
+    padding: 18px;
+    margin: 20px;
+
+    background: white;
+    border-radius: 12px;
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+
+/* SEARCH BAR */
+
+.searchBar {
+    width: 420px;
+    max-width: 100%;
+
+    padding: 12px 16px;
+
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+
+    font-size: 14px;
+    background-color: #f8fafc;
+
+    transition: all 0.2s ease;
+}
+
+.searchBar::placeholder {
+    color: #8a94a6;
+}
+
+.searchBar:hover {
+    border-color: #2563eb;
+}
+
+.searchBar:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+
+/* DROPDOWN */
+
+.dropDown {
+    padding: 12px 16px;
+
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.dropDown:hover {
+    border-color: #2563eb;
+}
+
+.dropDown:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+
+
+.dropDown option {
+    background-color: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+    padding: 10px;
+    border: 3px solid #000000;
+}
+
+
+/* SELECTED OPTION */
+
+.dropDown option:checked {
+    background-color: #2563eb;
+    color: white;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .header-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchBar {
+        width: 100%;
+    }
+
+    .dropDown {
+        width: 100%;
+    }
+}
